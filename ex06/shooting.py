@@ -86,7 +86,7 @@ effect_y = [0] * EFFECT_MAX #エフェクトのY座標
 def set_bullet(): #弾のスタンバイ
     global bull_n
     bull_f[bull_n] = True
-    bull_x[bull_n] = px - 16
+    bull_x[bull_n] = px + 8
     bull_y[bull_n] = py - 32
     bull_n = (bull_n + 1) % BULLET_MAX
 
