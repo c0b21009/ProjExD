@@ -107,7 +107,6 @@ def move_bullet(screen):#弾を飛ばす
                 bull_f[i] = False
 
 
-
 def move_player(screen, key):
     global px, py, space, player_hp, player_muteki, idx, t, score, reload_timer, REROAD_TIME
     if key[pg.K_UP] == 1:
@@ -194,6 +193,7 @@ def move_player(screen, key):
                     ebull_f2[i] = False
 
                 REROAD_TIME = 10
+
 
     elif idx == 6: #stage lv.2
         for i in range(ENEMY_MAX):
@@ -288,6 +288,7 @@ def draw_text(screen,x,y,text,size,col):#文字表示の関数
     x = x - s.get_width()/2
     y = y - s.get_height()/2
     screen.blit(s,[x,y])
+
 
 def effect_explode(x, y): #エフェクトを描画する準備（成澤）
     global e_n
@@ -448,12 +449,12 @@ def main(): #main関数
             pg.draw.rect(screen,(32,32,32),[10+player_hp*2,450,(100-player_hp)*2,25])#ダメージを受けたら矩形で塗りつぶす
             draw_text(screen, 580, 20, "SCORE" + str(score), 30, WHITE)
         #(佐々木)--------------
-
+        
         #成澤    
         draw_effect(screen)
-        
         pg.display.update()
         clock.tick(30)
-        
+
+
 if __name__ == "__main__":
     main()
