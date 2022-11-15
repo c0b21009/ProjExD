@@ -5,7 +5,8 @@ import random
 import tkinter.messagebox as tkm
 from pygame import mixer
 
-
+HEIGHT = 480
+WIDTH = 640
 img_bg = pg.image.load("fig/sora2.png")
 img_player = pg.image.load("fig/mafu2.png")
 img_weapon = pg.image.load("fig/sizuku3.png") #武器(弾)画像
@@ -118,8 +119,8 @@ def move_player(screen, key):
     if key[pg.K_DOWN] == 1:
         py = py + 10
 
-        if py > 400:
-            py = 400
+        if py > HEIGHT-80:
+            py = HEIGHT-80
 
     if key[pg.K_LEFT] == 1:
 
@@ -129,8 +130,8 @@ def move_player(screen, key):
             
     if key[pg.K_RIGHT] == 1:
         px = px + 10
-        if px > 570:
-            px = 570
+        if px > WIDTH-60:
+            px = WIDTH-60
 
     #(佐々木)         
     if key[pg.K_SPACE]:
@@ -310,7 +311,7 @@ def main(): #main関数
     global t, bg_y, idx, player_hp, player_muteki, px, py, score
     pg.init()
     pg.display.set_caption("シューティングゲーム")
-    screen = pg.display.set_mode((640,480))
+    screen = pg.display.set_mode((WIDTH,HEIGHT))
     clock = pg.time.Clock()
     mixer.init()#21055 菊池
     mixer.music.load("fig/se_music.mp3")
@@ -421,7 +422,7 @@ def main(): #main関数
             move_player(screen,key)
             move_bullet(screen)
             if t%7 == 0: #7フレームにつき敵1体出現
-                set_enemy(random.randint(20,620),-10,90,0,6)
+                set_enemy(random.randint(20,WIDTH-20),-10,90,0,6)
             move_enemy(screen)
         
         if idx == 7: #Hardモード以外のclear
